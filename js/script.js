@@ -14,8 +14,14 @@ function displayEvents() {
 
   events.forEach((event, index) => {
     const card = document.createElement("article");
-    card.innerHTML = `<h3>${event.name}</h3>
-      <p>Date: ${event.date}</p><p>Venue: ${event.venue}</p>`;
+    const heading = document.createElement("h3");
+    heading.textContent = event.name;
+
+    const details = document.createElement("p");
+    details.textContent = `Date: ${event.date} | Venue: ${event.venue}`;
+
+    card.appendChild(heading);
+    card.appendChild(details);
     list.appendChild(card);
 
     const option = document.createElement("option");
@@ -28,17 +34,20 @@ function displayEvents() {
 document.getElementById("registration-form")
   .addEventListener("submit", function (e) {
     e.preventDefault();
-    const name = document.getElementById("student-name").value;
-    const selected = document.getElementById("event-choice").value;
 
-    if (selected === "") {
-      document.getElementById("registration-message").textContent =
-        "Please select an event.";
+    const name = document.getElementById("student-name").value.trim();
+    const email = document.getElementById("student-email").value.trim();
+    const selected = document.getElementById("event-choice").value;
+    const message = document.getElementById("registration-message");
+
+    if (!name || !email || selected === "") {
+      message.textContent = "Please complete all fields and select an event.";
       return;
     }
 
-    document.getElementById("registration-message").textContent =
-      `${name}, your demo registration for ${events[selected].name} is complete.`;
+    message.textContent =
+      `Thank you, ${name}! Your demo registration for ${events[selected].name} is complete.`;
+
     this.reset();
   });
 
