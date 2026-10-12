@@ -1,5 +1,7 @@
 cat > js/script.js <<'EOF'
-const events = [];
+const events = [ { name: "Coding Competition", date: "2026-11-05", venue: "Computer Lab" },
+  { name: "Cultural Fest", date: "2026-11-10", venue: "College Auditorium" },
+  { name: "Project Expo", date: "2026-11-15", venue: "Seminar Hall" }];
 
 function displayEvents() {
   const list = document.getElementById("event-list");
