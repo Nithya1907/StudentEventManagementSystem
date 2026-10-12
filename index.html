@@ -1,4 +1,4 @@
-cat > index.html <<'EOF'
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,7 @@ cat > index.html <<'EOF'
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
   <header>
     <h1>Student Event Management System</h1>
     <p>Discover, register and participate in college events.</p>
@@ -23,23 +24,41 @@ cat > index.html <<'EOF'
     <section id="events">
       <h2>Upcoming Events</h2>
       <div id="event-list">
-        <p>Event listings will appear here.</p>
+        <p>Loading events...</p>
       </div>
     </section>
 
     <section id="registration">
       <h2>Student Registration</h2>
+
       <form id="registration-form">
-        <input id="student-name" type="text"
-               placeholder="Enter your name" required>
-        <input id="student-email" type="email"
-               placeholder="Enter your email" required>
+        <input
+          id="student-name"
+          type="text"
+          placeholder="Enter your name"
+          required
+        >
+
+        <input
+          id="student-email"
+          type="email"
+          placeholder="Enter your email"
+          required
+        >
+
         <select id="event-choice" required>
           <option value="">Select an event</option>
+          <option value="Technical Workshop">Technical Workshop</option>
+          <option value="Coding Competition">Coding Competition</option>
+          <option value="Cultural Fest">Cultural Fest</option>
+          <option value="Sports Day">Sports Day</option>
+          <option value="Science Exhibition">Science Exhibition</option>
         </select>
+
         <button type="submit">Register</button>
       </form>
-      <p id="registration-message"></p>
+
+      <p id="registration-message" role="status"></p>
     </section>
   </main>
 
@@ -50,4 +69,3 @@ cat > index.html <<'EOF'
   <script src="js/script.js"></script>
 </body>
 </html>
-EOF
