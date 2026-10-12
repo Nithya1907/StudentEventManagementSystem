@@ -1,0 +1,59 @@
+cat > css/style.css <<'EOF'
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  color: #222;
+}
+
+header {
+  background: #183b66;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+nav {
+  background: #102b4c;
+  padding: 14px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+main {
+  max-width: 900px;
+  margin: 25px auto;
+  padding: 0 16px;
+}
+
+section {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+input, select, button {
+  box-sizing: border-box;
+  padding: 11px;
+  margin: 6px 0;
+  max-width: 100%;
+}
+
+button {
+  background: #183b66;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 18px;
+}
+EOF

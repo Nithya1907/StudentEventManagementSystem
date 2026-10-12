@@ -1,0 +1,53 @@
+cat > index.html <<'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Event Management System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Student Event Management System</h1>
+    <p>Discover, register and participate in college events.</p>
+  </header>
+
+  <nav>
+    <a href="#events">Events</a>
+    <a href="#registration">Registration</a>
+    <a href="admin.html">Admin</a>
+  </nav>
+
+  <main>
+    <section id="events">
+      <h2>Upcoming Events</h2>
+      <div id="event-list">
+        <p>Event listings will appear here.</p>
+      </div>
+    </section>
+
+    <section id="registration">
+      <h2>Student Registration</h2>
+      <form id="registration-form">
+        <input id="student-name" type="text"
+               placeholder="Enter your name" required>
+        <input id="student-email" type="email"
+               placeholder="Enter your email" required>
+        <select id="event-choice" required>
+          <option value="">Select an event</option>
+        </select>
+        <button type="submit">Register</button>
+      </form>
+      <p id="registration-message"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Student Event Management System | College Project</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
+EOF
