@@ -1,55 +1,72 @@
-cat > js/script.js <<'EOF'
+
 const events = [
-  { name: "Coding Competition", date: "2026-11-05", venue: "Computer Lab" },
-  { name: "Cultural Fest", date: "2026-11-10", venue: "College Auditorium" },
-  { name: "Project Expo", date: "2026-11-15", venue: "Seminar Hall" }
+  {
+    name: "Technical Workshop",
+    description: "Learn new technologies and technical skills."
+  },
+  {
+    name: "Coding Competition",
+    description: "Test your programming and problem-solving skills."
+  },
+  {
+    name: "Cultural Fest",
+    description: "Participate in music, dance and cultural activities."
+  },
+  {
+    name: "Sports Day",
+    description: "Take part in exciting sports competitions."
+  },
+  {
+    name: "Science Exhibition",
+    description: "Present innovative science projects and ideas."
+  }
 ];
 
-function displayEvents() {
-  const list = document.getElementById("event-list");
-  const choice = document.getElementById("event-choice");
+const eventList = document.getElementById("event-list");
+const eventChoice = document.getElementById("event-choice");
+const registrationForm = document.getElementById("registration-form");
+const registrationMessage = document.getElementById("registration-message");
 
-  list.innerHTML = "";
-  choice.innerHTML = '<option value="">Select an event</option>';
+// Display upcoming events
+eventList.innerHTML = "";
 
-  events.forEach((event, index) => {
-    const card = document.createElement("article");
-    const heading = document.createElement("h3");
-    heading.textContent = event.name;
+events.forEach(function(event) {
+  const card = document.createElement("div");
+  const heading = document.createElement("h3");
+  const description = document.createElement("p");
 
-    const details = document.createElement("p");
-    details.textContent = `Date: ${event.date} | Venue: ${event.venue}`;
+  heading.textContent = event.name;
+  description.textContent = event.description;
 
-    card.appendChild(heading);
-    card.appendChild(details);
-    list.appendChild(card);
+  card.appendChild(heading);
+  card.appendChild(description);
+  eventList.appendChild(card);
+});
 
-    const option = document.createElement("option");
-    option.value = index;
-    option.textContent = event.name;
-    choice.appendChild(option);
-  });
-}
+// Populate the dropdown dynamically
+events.forEach(function(event) {
+  const option = document.createElement("option");
+  option.value = event.name;
+  option.textContent = event.name;
+  eventChoice.appendChild(option);
+});
 
-document.getElementById("registration-form")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
+// Handle student registration
+registrationForm.addEventListener("submit", function(event) {
+  event.preventDefault();
 
-    const name = document.getElementById("student-name").value.trim();
-    const email = document.getElementById("student-email").value.trim();
-    const selected = document.getElementById("event-choice").value;
-    const message = document.getElementById("registration-message");
+  const name = document.getElementById("student-name").value.trim();
+  const email = document.getElementById("student-email").value.trim();
+  const selectedEvent = eventChoice.value;
 
-    if (!name || !email || selected === "") {
-      message.textContent = "Please complete all fields and select an event.";
-      return;
-    }
+  if (!name || !email || !selectedEvent) {
+    registrationMessage.textContent = "Please fill in all fields.";
+    return;
+  }
 
-    message.textContent =
-      `Thank you, ${name}! Your demo registration for ${events[selected].name} is complete.`;
+  registrationMessage.textContent =
+    "Registration successful! " + name +
+    ", you registered for " + selectedEvent + ".";
 
-    this.reset();
-  });
-
-displayEvents();
-EOF
+  registrationForm.reset();
+});
