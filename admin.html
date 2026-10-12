@@ -1,0 +1,54 @@
+cat > admin.html <<'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Management</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Administrator - Event Management</h1>
+    <p>Add event information for the college community.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Add a New Event</h2>
+      <form id="event-form">
+        <input id="event-name" placeholder="Event name" required>
+        <input id="event-date" type="date" required>
+        <input id="event-venue" placeholder="Event venue" required>
+        <button type="submit">Add Event</button>
+      </form>
+      <p id="admin-message"></p>
+      <ul id="admin-event-list"></ul>
+    </section>
+
+    <p><a href="index.html">Back to student homepage</a></p>
+  </main>
+
+  <script>
+    const form = document.getElementById("event-form");
+    const list = document.getElementById("admin-event-list");
+    const message = document.getElementById("admin-message");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("event-name").value.trim();
+      const date = document.getElementById("event-date").value;
+      const venue = document.getElementById("event-venue").value.trim();
+
+      const item = document.createElement("li");
+      item.textContent = `${name} — ${date} — ${venue}`;
+      list.appendChild(item);
+
+      message.textContent = "Event added to this demo page.";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
+EOF
